@@ -1,10 +1,16 @@
 {
-  "name": "khoatr197_chart",
+  "name": "d3_chart_khoatr",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "module",
   "description": "A D3 chart with React",
-  
+  "files": [
+    "dist" 
+  ],
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/your-user/repo-url.git"
+},
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

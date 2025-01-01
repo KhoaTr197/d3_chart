@@ -12,6 +12,14 @@ Feel free to explore the code and contribute to the project!
 - Provides scale handlers
 - Provides data transformation handlers
 
+## How to use
+
+**Install the package via npm:**
+
+```sh
+npm install d3_chart_khoatr
+```
+
 ## Full Example
 
 For more details, please refer to the manual below this example.
