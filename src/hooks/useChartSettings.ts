@@ -1,62 +1,62 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChartSettings } from '../types'
+import { ChartSettings } from '..'
 
 const init = (config: ChartSettings) => {
-    const defaultConfig = {
-        ...config,
-        marginLeft: config?.marginLeft || 32,
-        marginRight: config?.marginRight || 32,
-        marginTop: config?.marginTop || 32,
-        marginBottom: config?.marginBottom || 64,
-    }
+  const defaultConfig = {
+    ...config,
+    marginLeft: config?.marginLeft || 32,
+    marginRight: config?.marginRight || 32,
+    marginTop: config?.marginTop || 32,
+    marginBottom: config?.marginBottom || 64,
+  }
 
-    return {
-      ...defaultConfig,
-      boundedWidth: Math.max((defaultConfig.width || 0) - defaultConfig.marginLeft - defaultConfig.marginRight, 0),
-      boundedHeight: Math.max((defaultConfig.height || 0) - defaultConfig.marginTop - defaultConfig.marginBottom, 0),
-    }
+  return {
+    ...defaultConfig,
+    boundedWidth: Math.max((defaultConfig.width || 0) - defaultConfig.marginLeft - defaultConfig.marginRight, 0),
+    boundedHeight: Math.max((defaultConfig.height || 0) - defaultConfig.marginTop - defaultConfig.marginBottom, 0),
+  }
 }
 
 export const useChartSettings = (config: ChartSettings) => {
-    const [width, setWidth] = useState(0)
-    const [height, setHeight] = useState(0)
-    
-    // ref that reference to chart
-    const ref = useRef<HTMLDivElement | null>(null)
+  const [width, setWidth] = useState(0)
+  const [height, setHeight] = useState(0)
 
-    // chart settings
-    const settings = init(config)
+  // ref that reference to chart
+  const ref = useRef<HTMLDivElement | null>(null)
 
-    //listen to chart size changes
-    useEffect(() => {
-      //if width & height != 0 -> dont need to listen size changes
-      if(settings.width && settings.height) return
+  // chart settings
+  const settings = init(config)
 
-      const resizeObserver = new ResizeObserver(entries => {
-        const entry = entries[0]
+  //listen to chart size changes
+  useEffect(() => {
+    //if width & height != 0 -> dont need to listen size changes
+    if (settings.width && settings.height) return
 
-        if (width != entry.contentRect.width)
-          setWidth(entry.contentRect.width)
-        if (height != entry.contentRect.height)
-          setHeight(entry.contentRect.height)
-      })
-      if (ref.current) {
-        resizeObserver.observe(ref.current)
-      }
+    const resizeObserver = new ResizeObserver(entries => {
+      const entry = entries[0]
 
-      return () => {
-        if (ref.current) {
-          resizeObserver.unobserve(ref.current)
-        }
-      }
-    }, [])
-
-    // new chart settings with new width & height
-    const newSettings = init({
-        ...settings,
-        width: settings.width || width,
-        height: settings.height || height,
+      if (width != entry.contentRect.width)
+        setWidth(entry.contentRect.width)
+      if (height != entry.contentRect.height)
+        setHeight(entry.contentRect.height)
     })
+    if (ref.current) {
+      resizeObserver.observe(ref.current)
+    }
 
-    return [ref, newSettings] as const
+    return () => {
+      if (ref.current) {
+        resizeObserver.unobserve(ref.current)
+      }
+    }
+  }, [])
+
+  // new chart settings with new width & height
+  const newSettings = init({
+    ...settings,
+    width: settings.width || width,
+    height: settings.height || height,
+  })
+
+  return [ref, newSettings] as const
 }

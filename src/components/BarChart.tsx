@@ -1,36 +1,24 @@
 import { useEffect, useRef } from "react";
 import * as d3 from "d3";
-import { ChartProps } from "../types";
+import { BarChartProps } from "../index.d";
 import { wrapText } from "./utils";
-
-type BarChartProps = ChartProps & {
-  field: {
-    x: string;
-    y: string;
-  };
-  style?: {
-    fontSize?: string;
-    barColor?: string;
-  };
-};
 
 const BarChart = ({
   data,
   field,
   scale,
   config,
-  id='',
-  classes='',
+  id = "",
+  classes = "",
   style,
 }: BarChartProps) => {
-
   const { x, y } = scale;
 
   const styles = {
     fontSize: "12px",
     barColor: "steelblue",
     ...style,
-  }
+  };
 
   const ref = useRef<SVGSVGElement | null>(null);
 
@@ -49,7 +37,8 @@ const BarChart = ({
       .call((g) => g.select(".domain").remove())
       //style the ticks
       .call((g) =>
-        g.selectAll(".tick text")
+        g
+          .selectAll(".tick text")
           .attr("font-size", styles.fontSize)
           .each(function () {
             wrapText.call(this as SVGTextElement);
@@ -65,13 +54,11 @@ const BarChart = ({
       //remove the domain line
       .call((g) => g.select(".domain").remove())
       //style the ticks
-      .call((g) => 
-        g.selectAll(".tick text")
-        .attr("font-size", styles.fontSize)
-      )
+      .call((g) => g.selectAll(".tick text").attr("font-size", styles.fontSize))
       //style the tick lines
       .call((g) =>
-        g.selectAll(".tick:not(:first-child) line")
+        g
+          .selectAll(".tick:not(:first-child) line")
           .attr("stroke-opacity", 0.5)
           .attr("stroke-dasharray", "2,2")
       );
@@ -82,17 +69,21 @@ const BarChart = ({
       .selectAll()
       .data(data)
       .join("rect")
-        .attr("fill", styles.barColor)
-        .attr("x", (d:any) => x.scale(d[field.x]))
-        .attr("y", (d:any) => y.scale(d[field.y]))
-        .attr("height", (d:any) => (y.scale(0) - y.scale(d[field.y]) > 0 ? y.scale(0) - y.scale(d[field.y]) : 0))
-        .attr("width", x.scale.bandwidth());
+      .attr("fill", styles.barColor)
+      .attr("x", (d: any) => x.scale(d[field.x]))
+      .attr("y", (d: any) => y.scale(d[field.y]))
+      .attr("height", (d: any) =>
+        y.scale(0) - y.scale(d[field.y]) > 0
+          ? y.scale(0) - y.scale(d[field.y])
+          : 0
+      )
+      .attr("width", x.scale.bandwidth());
 
     //clean up
     return () => {
       d3.select(ref.current).selectAll("g").remove();
       d3.select(ref.current).selectAll("path").remove();
-    }
+    };
   }, [scale]);
 
   return (
@@ -103,8 +94,7 @@ const BarChart = ({
       height={config.height}
       viewBox={`0 0 ${config.width} ${config.height}`}
       ref={ref}
-    >
-    </svg>
+    ></svg>
   );
 };
 
