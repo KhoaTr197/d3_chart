@@ -8,8 +8,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/index.ts', // Entry point of your library
-      name: 'D3_Chart',
-      fileName: (format) => `d3-chart.${format}.js`,
+      name: 'd3-chart-khoatr',
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
       // Ensure to externalize deps that shouldn't be bundled into your library

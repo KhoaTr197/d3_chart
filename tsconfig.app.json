@@ -5,6 +5,7 @@
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
+    "declaration": true,
     "skipLibCheck": true,
 
     /* Bundler mode */
@@ -23,4 +24,5 @@
     "noUncheckedSideEffectImports": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/data.ts"],
+  "exclude": ["node_modules", "dist"]
 }

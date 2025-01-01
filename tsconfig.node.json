@@ -6,7 +6,6 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "noImplicitAny": true,
-    "outDir": "./dist",
 
     /* Bundler mode */
     "moduleResolution": "bundler",
