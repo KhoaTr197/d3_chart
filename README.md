@@ -1,5 +1,7 @@
 # KhoaTr197's D3 Chart
 
+[![vn](https://img.shields.io/badge/lang-vn-red.svg)](./README.vn.md)
+
 ## About
 
 This project is a chart module built on D3.js. It provides a set of reusable chart components that can be easily customized and embedded into any React project. The goal is to simplify the process of creating interactive and visually appealing data visualizations.
