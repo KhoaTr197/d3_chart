@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChartSettings } from '..'
+import { ChartSettings } from '../index.d'
 
 const init = (config: ChartSettings) => {
   const defaultConfig = {
