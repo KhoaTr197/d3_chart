@@ -19,7 +19,7 @@ Feel free to explore the code and contribute to the project!
 **Install the package via npm:**
 
 ```sh
-npm install d3_chart_khoatr
+npm install d3-chart-khoatr
 ```
 
 ## Full Example
