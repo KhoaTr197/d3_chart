@@ -19,7 +19,7 @@ Hãy thoải mái khám phá mã nguồn và đóng góp cho dự án!
 **Cài đặt package qua npm:**
 
 ```sh
-npm install d3_chart_khoatr
+npm install d3-chart-khoatr
 ```
 
 ## Ví dụ đầy đủ
@@ -64,10 +64,10 @@ const App = () => {
         }}
         ref={ref}
       >
-        <ChartD3.Line
+        <ChartD3.Bar
           data={chartData}
           field={{
-            x: "date",
+            x: "company",
             y: "initial_price",
           }}
           scale={{
