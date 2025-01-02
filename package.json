@@ -5,18 +5,20 @@
   "type": "module",
   "description": "A D3 chart with React",
   "files": [
-    "dist"
+    "lib"
   ],
-  "types": "dist/index.d.ts",
-  "main": "dist/index.umd.js",
-  "module": "dist/index.es.js",
+  "types": "lib/index.d.ts",
+  "main": "lib/index.umd.js",
+  "module": "lib/index.es.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/KhoaTr197/d3_chart.git"
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build -c vite.lib.config.ts",
+    "build:demo": "tsc -b && vite build -c vite.config.ts",
+    "build:lib": "tsc -b && vite build -c vite.lib.config.ts",
     "lint": "eslint .",
     "preview": "vite preview"
   },
