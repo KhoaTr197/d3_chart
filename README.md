@@ -64,10 +64,10 @@ const App = () => {
         }}
         ref={ref}
       >
-        <ChartD3.Line
+        <ChartD3.Bar
           data={chartData}
           field={{
-            x: "date",
+            x: "company",
             y: "initial_price",
           }}
           scale={{
