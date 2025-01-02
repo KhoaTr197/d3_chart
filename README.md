@@ -8,6 +8,8 @@ This project is a chart module built on D3.js. It provides a set of reusable cha
 
 Feel free to explore the code and contribute to the project!
 
+## [Demo](https://d3-chart-khoatr-demo.netlify.app)
+
 ## Features
 
 - Supports chart types like Line, Bar, and Pie

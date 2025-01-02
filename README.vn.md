@@ -8,6 +8,8 @@ Dự án này là một module biểu đồ được xây dựng trên D3.js. N�
 
 Hãy thoải mái khám phá mã nguồn và đóng góp cho dự án!
 
+## [Demo](https://d3-chart-khoatr-demo.netlify.app)
+
 ## Tính năng
 
 - Hỗ trợ các loại biểu đồ như Line, Bar và Pie
